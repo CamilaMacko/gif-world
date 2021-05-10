@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./index.css";
 
-function App() {
+import Header from "./components/Header";
+import Search from "./components/Search";
+
+export default function App() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  const changeMode = () => {
+    setDarkMode(!darkMode);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={darkMode ? "App dark" : "App light"}>
+      <Header changeMode={changeMode} mode={darkMode} />
+      <Search mode={darkMode} />
     </div>
   );
 }
-
-export default App;
